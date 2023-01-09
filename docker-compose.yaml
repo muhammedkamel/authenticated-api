@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  # api:
+  #   build: .
+  #   # command: ['sh', 'wait-for-mysql.sh', 'db', 'yarn', 'start']
+  #   command: ['yarn', 'start']
+  #   volumes:
+  #     - .:/usr/app
+  #   links:
+  #     - db
+  #   ports:
+  #     - 3000:3000
+  #   depends_on:
+  #     - db
+  #   restart: on-failure
+  #   tty: true
+  #   stdin_open: true
+  #   # env_file: .env
+
+  db:
+    image: mysql:8.0.31
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: authenticated_api
+    ports:
+      - 3306:3306
+
+volumes:
+  mysql-data:
