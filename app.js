@@ -11,9 +11,11 @@ const app = express()
 
 app.use(BodyParser.json())
 
+app.use('/', auth);
+app.use(express.static('public'));
 
-app.use('/', auth)
 app.use(authMiddleware)
+
 app.use('/api', welcome)
 
 const server = app.listen(3000, () => {

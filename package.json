@@ -5,8 +5,8 @@
   "author": "Mohamed Kamel",
   "license": "MIT",
   "scripts": {
-    "start": "node -r dotenv app.js",
-    "dev": "nodemon -r dotenv",
+    "start": "node -r dotenv/config app.js",
+    "dev": "nodemon -r dotenv/config app.js",
     "migration": "sequelize db:migrate"
   },
   "dependencies": {
