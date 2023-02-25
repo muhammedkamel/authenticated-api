@@ -22,6 +22,8 @@ const server = app.listen(3000, () => {
   console.log('up and running')
 })
 
+
+
 const shutdown = async () => {
   await server.close()
   await DB.disconnect()
@@ -29,3 +31,14 @@ const shutdown = async () => {
 
 process.on('SIGINT', shutdown)
 process.on('SIGTERM', shutdown)
+process
+  .on('uncaughtException', (error) => {
+    console.error(error)
+
+    return shutdown()
+  })
+  .on('unhandledRejection', (error) => {
+    console.error(error)
+
+    return shutdown()
+  })

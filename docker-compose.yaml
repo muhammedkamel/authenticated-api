@@ -6,6 +6,8 @@ services:
       - 3000:3000
     depends_on:
       - mysql
+    volumes:
+      - .:/usr/app
     restart: on-failure
     env_file: .env
   mysql:
